@@ -44,7 +44,7 @@ motionangle = median(theta(P(:,2)));
 figure
 cepstral = ifftshift(ifft(log((fftblurred))));
 % rotatecepstral = imrotate(cepstral,motionangle);
-imagesc(abs(rotatecepstral))
+imagesc(abs(cepstral))
 title('rotated cepstral, cepstral=ifft(log(abs(fftblurred)))')
 sumrc=real(sum((cepstral)));
 figure
@@ -53,7 +53,7 @@ hold on
 width = length(cepstral(1,:));
 maxsumrc2=max(sumrc(:))/2;
 plot(1:width,zeros(width))
-title('summed columns of the rotated cepstral, with max/2')
+title('summed columns of the rotated cepstral, with 0 plotted')
 lower = 0; upper = width;
 for i=1:floor(width/2)
     if sumrc(i)<0
