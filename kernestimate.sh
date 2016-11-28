@@ -31,6 +31,7 @@ vedge if=bytelogmagfft -d of=2channelbyteedges
 vhoughl if=2channelbyteedges of=hough
 vcc houghanalyze.c -o houghanalyze
 eval $(houghanalyze if=hough)
+echo theta is $theta
 #created fhough to read the angle
 #vcc fhough.c -o fhough
 #eval $(fhough if=bytelogmagfft)
@@ -38,6 +39,9 @@ eval $(houghanalyze if=hough)
 #todo: why does the fft image have so many vertical streaks?
 vmath if=fft_$if -abs | vmath -mlog of=logrmfft
 vfft if=logrmfft -i | vchan -mp | vchan c=1 |vifx of=cepstral
+vcc closest0.c -o closest
+eval $(closest if=cepstral)
+echo range is $kernellength
 
 rm clipmagfft
 rm magged
