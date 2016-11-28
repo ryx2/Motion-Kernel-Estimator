@@ -41,7 +41,7 @@ vmath if=fft_$if -abs | vmath -mlog of=logrmfft
 vfft if=logrmfft -i | vchan -mp | vchan c=1 |vifx of=cepstral
 vcc closest0.c -o closest
 eval $(closest if=cepstral)
-echo range is $kernellength
+echo kernellength is $kernellength
 
 rm clipmagfft
 rm magged
