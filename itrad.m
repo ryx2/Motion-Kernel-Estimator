@@ -83,3 +83,5 @@ for m=1:numtheta
 end
 projection=iradon((smallstorage),thetas(181:-1:(181-numtheta+1)));
 figure; imagesc(projection)
+title('projection using best 15 angles');
+figure; imagesc(imagesc(radonarraystorage));
